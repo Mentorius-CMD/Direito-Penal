@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direito Penal - Aplicação da Lei Penal</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 20px; }
+        .feedback { font-weight: bold; margin-top: 5px; }
+    </style>
+    <script>
+        function checkAnswer(questionId, correctAnswer, explanation) {
+            const selected = document.querySelector(`input[name="q${questionId}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionId}`);
+            
+            if (!selected) {
+                feedback.textContent = "Escolha uma opção.";
+                feedback.style.color = "red";
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                feedback.textContent = "Correto! " + explanation;
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "Errado! " + explanation;
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Direito Penal</h1>
+    <h2>Aplicação da Lei Penal</h2>
+    
+    <div class="question">
+        <p>1. De acordo com o princípio da anterioridade, é possível punir uma conduta que não era considerada crime na época em que foi praticada?</p>
+        <input type="radio" name="q1" value="errado"> Certo<br>
+        <input type="radio" name="q1" value="certo"> Errado<br>
+        <button onclick="checkAnswer(1, 'certo', 'Não há crime sem lei anterior que o defina. (Art. 1º)')">Verificar</button>
+        <p id="feedback1" class="feedback"></p>
+    </div>
+    
+    <div class="question">
+        <p>2. Se uma lei posterior descriminaliza uma conduta, aqueles que foram condenados por esse crime antes da mudança continuam cumprindo suas penas normalmente?</p>
+        <input type="radio" name="q2" value="errado"> Certo<br>
+        <input type="radio" name="q2" value="certo"> Errado<br>
+        <button onclick="checkAnswer(2, 'errado', 'A lei posterior mais benéfica retroage para beneficiar o réu. (Art. 2º)')">Verificar</button>
+        <p id="feedback2" class="feedback"></p>
+    </div>
+    
+    <!-- Adicione mais questões conforme necessário -->
+    
+</body>
+</html>
