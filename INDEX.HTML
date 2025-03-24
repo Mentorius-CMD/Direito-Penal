@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questões de Direito Penal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Questões de Direito Penal - Aplicação da Lei Penal</h1>
+    <div id="quiz"></div>
+    
+    <script>
+        const questions = [
+            { text: "O princípio da legalidade impede a retroatividade da lei penal mais severa.", answer: true, explanation: "O princípio da legalidade exige que não haja retroatividade da lei penal mais gravosa." },
+            { text: "A extraterritorialidade da lei penal brasileira ocorre apenas nos casos de crimes contra a vida do Presidente da República.", answer: false, explanation: "A extraterritorialidade abrange outras hipóteses, como crimes contra a fé pública e administração pública." },
+            { text: "A lei penal mais benéfica retroage para beneficiar o réu, mesmo após o trânsito em julgado da sentença penal condenatória.", answer: true, explanation: "Esse é o princípio da retroatividade da lei penal mais benéfica, previsto na Constituição." },
+            { text: "O tempo do crime, para o Direito Penal brasileiro, é determinado pelo momento do resultado.", answer: false, explanation: "Segundo o Código Penal, o tempo do crime é determinado pela teoria da atividade, ou seja, pelo momento da ação ou omissão." },
+            { text: "O princípio da territorialidade impede a aplicação da lei penal brasileira a crimes cometidos no exterior.", answer: false, explanation: "A lei penal brasileira pode ser aplicada a crimes cometidos fora do país, conforme os casos de extraterritorialidade." }
+        ];
+
+        function loadQuiz() {
+            const quizContainer = document.getElementById("quiz");
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+                questionDiv.innerHTML = `<p>${index + 1}. ${q.text}</p>
+                    <button onclick="checkAnswer(${index}, true, this)">Certa</button>
+                    <button onclick="checkAnswer(${index}, false, this)">Errada</button>
+                    <p id="explanation-${index}" style="display:none;"></p>`;
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        function checkAnswer(index, userAnswer, button) {
+            const explanation = document.getElementById(`explanation-${index}`);
+            if (questions[index].answer === userAnswer) {
+                explanation.innerHTML = `<span class='correct'>Correto! ${questions[index].explanation}</span>`;
+            } else {
+                explanation.innerHTML = `<span class='incorrect'>Errado! ${questions[index].explanation}</span>`;
+            }
+            explanation.style.display = "block";
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>
+
